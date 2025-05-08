@@ -71,28 +71,6 @@ public class WareHouseController : ControllerBase
                         Now= DateTime.Now}
                     },
             ]);
-
-    //      await _dbClient.ExecuteNonQueryAsync(
-    //         @"UPDATE [Order]
-    //         SET FulfilledAt = @Now
-    //         WHERE IdOrder = @OrderId", new()
-    //         {
-    //             { "@Now", DateTime.Now}, 
-    //             {"@OrderId", orderId.Value }
-    //         });
-    //
-    //
-    //     var newID = await _dbClient.ExecuteNonQueryAsync(
-    //         @"INSERT INTO Product_Warehouse2222
-    //            (IdWarehouse, IdProduct, IdOrder, Amount, Price, CreatedAt)
-    //           VALUES(@WarehouseId, @ProductId, @OrderId, @Amount, @TotalPrice, @Now)",
-    //         new() {
-    //         {"@WarehouseId", request.IdWarehouse},
-    //         {"@ProductId", request.IdProduct},
-    //         {"@OrderId", orderId.Value},
-    //         {"@Amount", request.Amount},
-    //         {"@TotalPrice", price * request.Amount},
-    //         {"@Now", DateTime.Now}});
     return Ok(new { InsertedId = newId });
     }
 

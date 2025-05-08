@@ -168,33 +168,4 @@ public class DbClient(IConfiguration configuration)
             
         }
     }
-    
-    /// <summary>
-    /// Executes a stored procedure that does not return a result set
-    /// and returns the number of rows affected.
-    /// </summary>
-    /// <param name="procedureName">Name of the stored procedure.</param>
-    /// <param name="parameters">Optional dictionary of parameters.</param>
-    /// <returns>Number of rows affected.</returns>
-    public async Task<int> ExecuteProcedureAsync(string procedureName,
-        Dictionary<string, object> parameters = null)
-    {
-        await using var sqlConnection =
-            new SqlConnection(configuration.GetConnectionString("Default"));
-        await using var command = new SqlCommand(procedureName, sqlConnection)
-        {
-            CommandType = CommandType.StoredProcedure
-        };
-
-        if (parameters?.Count > 0)
-        {
-            foreach (var parameter in parameters)
-            {
-                command.Parameters.AddWithValue(parameter.Key, parameter.Value);
-            }
-        }
-
-        await sqlConnection.OpenAsync();
-        return await command.ExecuteNonQueryAsync();
-    }
 }
