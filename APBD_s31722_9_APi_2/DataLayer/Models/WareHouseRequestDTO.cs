@@ -1,6 +1,6 @@
 namespace APBD_s31722_9_APi_2.DataLayer.Models;
 
-public class WareHouseRequestDTO
+public class WareHouseRequestDto
 {
     public int IdProduct { get; set; }
     public int IdWarehouse { get; set; }
